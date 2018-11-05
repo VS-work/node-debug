@@ -1,0 +1,21 @@
+{
+  "name": "logger-poc",
+  "version": "0.1.0",
+  "description": "logger",
+  "author": "Vyacheslav Chub<vyacheslav.chub@valor-software.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && DEBUG_COLORS=false node ./lib/index.js"
+  },
+  "dependencies": {
+    "debug": "4.1.0",
+    "tslib": "1.9.3",
+    "typescript": "3.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "10.12.2",
+    "@types/debug": "0.0.31"
+  }
+}
