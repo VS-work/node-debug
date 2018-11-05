@@ -6,7 +6,7 @@ createDebug.formatters.j = (v) => {
   return JSON.stringify(v, null, 2);
 }
 
-// all data via log data handling (getLoggerObject)
+// get log data via log data handling (getLoggerObject)
 (() => {
   createDebug.enable('*');
 
@@ -19,7 +19,7 @@ createDebug.formatters.j = (v) => {
 
 console.log('-----------------------------');
 
-// errors only to console
+// get only errors to console
 (() => {
   createDebug.enable('*:err');
 
