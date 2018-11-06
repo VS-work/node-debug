@@ -1,6 +1,6 @@
 import * as createDebug from 'debug';
 import { DdfCsvReader } from './ddfcsv-reader';
-import { initLogger, ILoggable } from './custom-logger';
+import { initLogger, ILoggable } from './logger-wrapper';
 
 export class WaffleServer {
   private logger;
@@ -14,7 +14,7 @@ export class WaffleServer {
     const ddfCsvReader = new DdfCsvReader(this.loggerObject);
     const data = ddfCsvReader.read(query);
 
-    this.logger('got data %j in accordance with %j', data, query);
+    this.logger('got data ', data, ' in accordance with ', data, query);
 
     return data;
   }

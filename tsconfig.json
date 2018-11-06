@@ -24,7 +24,7 @@
     ]
   },
   "include": [
-    "src/index.ts", "src/verbosity.ts", "src/custom-logger.ts"
+    "src/index.ts", "src/server.ts"
   ],
   "exclude": [
     "lib",

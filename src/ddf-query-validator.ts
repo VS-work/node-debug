@@ -1,5 +1,5 @@
 import * as createDebug from 'debug';
-import { initLogger, ILoggable } from './custom-logger';
+import { initLogger, ILoggable } from './logger-wrapper';
 
 export class DdfQueryValidator {
   private logger;
@@ -10,7 +10,7 @@ export class DdfQueryValidator {
   }
 
   validate(query) {
-    this.logger('trying to validate %j', query);
+    this.logger('trying to validate ', query);
 
     return true;
   }

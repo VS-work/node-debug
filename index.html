@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <script src="./node_modules/debug/dist/debug.js"></script>
+  <script src="./dist/waffle-server.js"></script>
+</head>
+
+<body>
+  <script>
+    const createDebug = window.debug;
+
+    createDebug.enable('*');
+    const waffleServer = new logic.WaffleServer();
+    const query = { select: { all: true } };
+
+    const result = JSON.stringify(waffleServer.processQuery(query), null, 2);
+
+    document.write(result);
+  </script>
+</body>
+
+</html>

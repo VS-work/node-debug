@@ -1,6 +1,6 @@
 import * as createDebug from 'debug';
 import { DdfQueryValidator } from './ddf-query-validator';
-import { initLogger, ILoggable } from './custom-logger';
+import { initLogger, ILoggable } from './logger-wrapper';
 
 export class DdfCsvReader {
   private logger;
@@ -14,7 +14,7 @@ export class DdfCsvReader {
   }
 
   read(query) {
-    this.logger('reading %j', query);
+    this.logger('reading ', query);
     this.error('just an error');
 
     const validator = new DdfQueryValidator(this.loggerObject);
