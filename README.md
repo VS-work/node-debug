@@ -1,8 +1,8 @@
 # node-debug
 
-A set of short examples that illustrates https://www.npmjs.com/package/debug using across different modules.
+A set of short examples that illustrate https://www.npmjs.com/package/debug using across different modules.
 
-## Install & Run
+## Install
 
 `npm i`
 
@@ -101,8 +101,8 @@ Let's explain:
 
 1. Create `loggerWrapper`: https://github.com/VS-work/node-debug/blob/master/src/server.ts#L13 .
 2. `loggerWrapper` implements only one menthod - `log`: https://github.com/VS-work/node-debug/blob/master/src/logger-utils.ts#L7
-3. In the current case `loggerWrapper` get http response object during its creation
-4. And it's trying to write all of log paramters to http response instead console
+3. In the current case, `loggerWrapper` get http response object during its creation
+4. And it's trying to write all of the log parameters to HTTP response instead console
 5. Another mandatory point is: https://github.com/VS-work/node-debug/blob/master/src/logger-utils.ts#L29 (see `Output streams` in https://www.npmjs.com/package/debug).
 6. That's why `createLogger` is just an utility method: https://github.com/VS-work/node-debug/blob/master/src/logger-utils.ts#L25
 
@@ -118,7 +118,7 @@ Open browser with url `http://localhost:8080/index.html`. The result should be f
 
 Open `Chrome DevTools`->`Console` and you will see expected output.
 
-`Important note`: if you want to see JS objects as is, please don't apply formatters to them (see `Formatters` section in https://www.npmjs.com/package/debug). In following, for example, code https://github.com/VS-work/node-debug/blob/master/src/waffle-server.ts#L15 we get JS objects as is.
+*Important note*: if you want to see JS objects as is (collapsable), please don't apply formatters to them (see `Formatters` section in https://www.npmjs.com/package/debug). In following, for example, code https://github.com/VS-work/node-debug/blob/master/src/waffle-server.ts#L15 we get JS objects as is.
 
 ## Pros:
 
