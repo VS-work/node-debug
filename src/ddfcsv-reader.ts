@@ -1,16 +1,13 @@
-import * as createDebug from 'debug';
 import { DdfQueryValidator } from './ddf-query-validator';
-import { initLogger, ILoggable } from './logger-wrapper';
+import { createLogger, ILoggable } from './logger-utils';
 
 export class DdfCsvReader {
   private logger;
   private error;
 
   constructor(private loggerObject?: ILoggable) {
-    this.logger = createDebug('ddfcsvreader:log');
-    initLogger(this.logger, loggerObject);
-    this.error = createDebug('ddfcsvreader:err');
-    initLogger(this.error, loggerObject);
+    this.logger = createLogger('ddfcsvreader:log', loggerObject);
+    this.error = createLogger('ddfcsvreader:err', loggerObject);
   }
 
   read(query) {

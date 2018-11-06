@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as createDebug from 'debug';
 import { WaffleServer } from './waffle-server';
-import { getResponseLoggerWrapper } from './logger-wrapper';
+import { getResponseLoggerWrapper } from './logger-utils';
 
 const app = express();
 const port = 3000;

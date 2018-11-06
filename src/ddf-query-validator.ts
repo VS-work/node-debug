@@ -1,12 +1,10 @@
-import * as createDebug from 'debug';
-import { initLogger, ILoggable } from './logger-wrapper';
+import { createLogger, ILoggable } from './logger-utils';
 
 export class DdfQueryValidator {
   private logger;
 
   constructor(loggerObject?: ILoggable) {
-    this.logger = createDebug('ddfcsvreader:log');
-    initLogger(this.logger, loggerObject);
+    this.logger = createLogger('ddfcsvreader:log', loggerObject);
   }
 
   validate(query) {

@@ -1,3 +1,5 @@
+import * as createDebug from 'debug';
+
 export interface ILoggable {
   log: (...params) => void;
 }
@@ -15,8 +17,12 @@ export const getResponseLoggerWrapper = (response): ILoggable => ({
   }
 });
 
-export const initLogger = (logger, loggerWrapper?: ILoggable) => {
+export const createLogger = (namespace: string, loggerWrapper?: ILoggable) => {
+  const logger = createDebug(namespace);
+
   if (loggerWrapper) {
     logger.log = loggerWrapper.log.bind(loggerWrapper);
   }
+
+  return logger;
 };
