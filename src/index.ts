@@ -1,8 +1,8 @@
-import * as createDebug from 'debug';
+// import * as createDebug from 'debug';
 import { WaffleServer } from './waffle-server';
 
 (() => {
-  createDebug.enable('*');
+  // createDebug.enable('*');
   // createDebug.enable('*:err');
 
   const waffleServer = new WaffleServer();

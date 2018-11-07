@@ -2,6 +2,9 @@ const path = require('path');
 
 module.exports = () => ({
     mode: 'production',
+    node: {
+        fs: 'empty'
+    },
     entry: {
         'waffle-server': './src/waffle-server.ts'
     },
@@ -11,7 +14,7 @@ module.exports = () => ({
         libraryTarget: 'var',
         library: 'logic'
     },
-    performance: {hints: false},
+    performance: { hints: false },
     target: 'web',
     devtool: 'source-map',
     module: {

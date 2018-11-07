@@ -1,20 +1,29 @@
+import { createLogger } from 'bunyan';
 import { DdfQueryValidator } from './ddf-query-validator';
-import { createLogger, ILoggable } from './logger-utils';
+import { Writable } from 'stream';
+import { ConsoleStream } from './logger-utils';
 
 export class DdfCsvReader {
   private logger;
-  private error;
 
-  constructor(private loggerObject?: ILoggable) {
-    this.logger = createLogger('ddfcsvreader:log', loggerObject);
-    this.error = createLogger('ddfcsvreader:err', loggerObject);
+  constructor(private logStream?: Writable) {
+    this.logger = createLogger({
+      name: 'ddfcsvreader',
+      streams: [{
+        level: 'info',
+        type: 'raw',
+        src: true,
+        stream: this.logStream || new ConsoleStream()
+      }]
+    });
   }
 
   read(query) {
-    this.logger('reading ', query);
-    this.error('just an error');
+    this.logger.info('reading');
+    this.logger.info({msg: 'reading!', query});
+    this.logger.error('just an error');
 
-    const validator = new DdfQueryValidator(this.loggerObject);
+    const validator = new DdfQueryValidator(this.logStream);
 
     validator.validate(query);
 

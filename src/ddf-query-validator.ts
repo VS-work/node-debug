@@ -1,14 +1,24 @@
-import { createLogger, ILoggable } from './logger-utils';
+import { createLogger } from 'bunyan';
+import { Writable } from 'stream';
+import { ConsoleStream } from './logger-utils';
 
 export class DdfQueryValidator {
   private logger;
 
-  constructor(loggerObject?: ILoggable) {
-    this.logger = createLogger('ddfcsvreader:log', loggerObject);
+  constructor(private logStream?: Writable) {
+    this.logger = createLogger({
+      name: 'ddfcsvreader',
+      streams: [{
+        level: 'info',
+        type: 'raw',
+        src: true,
+        stream: this.logStream || new ConsoleStream()
+      }]
+    });
   }
 
   validate(query) {
-    this.logger('trying to validate ', query);
+    this.logger.info('trying to validate ', query);
 
     return true;
   }

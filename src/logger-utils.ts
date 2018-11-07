@@ -1,4 +1,5 @@
 import * as createDebug from 'debug';
+import { Writable } from 'stream';
 
 export interface ILoggable {
   log: (...params) => void;
@@ -31,3 +32,26 @@ export const createLogger = (namespace: string, loggerWrapper?: ILoggable) => {
 
   return logger;
 };
+
+export function ConsoleStream() {
+}
+
+ConsoleStream.prototype.write = function (rec) {
+  console.log(rec);
+}
+
+export function ResponseStream(response) {
+  this.response = response;
+}
+
+ResponseStream.prototype.write = function (rec) {
+  this.response.write(JSON.stringify(rec, null, 2));
+}
+
+/*export class XStream extends Writable {
+  _write(chunk, encoding, cb) {
+    console.log('!!!!!');
+  }
+}
+*/
+
